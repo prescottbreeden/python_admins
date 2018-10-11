@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Flask Admins MySQL</title>
+	<link 
+		rel="stylesheet" 
+		href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+<body>
+	{% if session['user_id']: %}
+	<a class="logout" href="/logout">Logout</a>
+	<div class="user__container">
+		{% if users: %}
+		<h2>Users</h2>
+		<div class="user__list">
+			<div class="user__list--row">
+				<div class="user__list--label">ID</div>
+				<div class="user__list--label">Name</div>
+				<div class="user__list--label">Email</div>
+				<div class="user__list--label">Status</div>
+				<div class="user__list--label">Actions</div>
+			</div>
+		</div>
+		{% for user in users: %}
+		<div class="user__list">
+			<div class="user__list--row">
+				<div class="user__list--item">{{user['user_id']}}</div>
+				<div class="user__list--item">{{user['full_name']}}</div>
+				<div class="user__list--item">{{user['email']}}</div>
+				<div class="user__list--item">{{user['status']}}</div>
+				<div class="user__list--item">
+					{% if session['user_id'] != user['user_id'] %}
+					<a 
+						class="user__list--btn u-red" 
+						href="/delete/{{user['user_id']}}">Remove</a>
+					{% endif %}
+					{% if user['status'] == 'Normal User': %}
+					<a 
+						class="user__list--btn u-green" 
+						href="/makeadmin/{{user['user_id']}}">Make Admin</a>
+					{% else: %}
+					<a 
+						class="user__list--btn u-red" 
+						href="/removeadmin/{{user['user_id']}}">Remove Admin</a>
+					{% endif %}
+				</div>
+			</div>
+	</div>
+	{% endfor %}
+	{% endif %}
+	{% else: %}
+	<div class="forms">
+		<div class="form__container">
+			<form 
+				class="form__register" 
+				method="POST"
+				action="/register">
+				<h2>Register</h2>
+				<div class="form__register--item">
+					<label for="first_name">First Name:</label>
+					<input type="text" name="first_name" value="{{form['first_name']}}">
+				</div>
+				<div class="form__register--item">
+					{% if 'reg_errors' in session.keys() %}
+					{% if session['reg_errors']['first_name']: %}
+					<span class="error">{{session['reg_errors']['first_name']}}</span>
+					{% endif %}
+					{% endif %}
+				</div>
+				<div class="form__register--item">
+					<label for="last_name">Last Name:</label>
+					<input type="text" name="last_name" value="{{form['last_name']}}">
+				</div>
+				<div class="form__register--item">
+					{% if 'reg_errors' in session.keys() %}
+					{% if session['reg_errors']['last_name']: %}
+					<span class="error">{{session['reg_errors']['last_name']}}</span>
+					{% endif %}
+					{% endif %}
+				</div>
+				<div class="form__register--item">
+					<label for="email">Email:</label>
+					<input type="email" name="email" value="{{form['email']}}">
+				</div>
+				<div class="form__register--item">
+					{% if 'reg_errors' in session.keys() %}
+					{% if session['reg_errors']['email']: %}
+					<span class="error">{{session['reg_errors']['email']}}</span>
+					{% endif %}
+					{% endif %}
+				</div>
+				<div class="form__register--item">
+					<label for="password">Password:</label>
+					<input type="password" name="password">
+				</div>
+				<div class="form__register--item">
+					{% if 'reg_errors' in session.keys() %}
+					{% if session['reg_errors']['password']: %}
+					<span class="error">{{session['reg_errors']['password']}}</span>
+					{% endif %}
+					{% endif %}
+				</div>
+				<div class="form__register--item">
+					<label for="password2">Confirm:</label>
+					<input type="password" name="password2">
+				</div>
+				<button class="form__register--btn">Register</button>
+			</form>
+		</div>
+		<div class="form__container">
+			<form 
+				class="form__register" 
+				method="POST"
+				action="/login">
+				<h2>Login</h2>
+				<div class="form__register--item">
+					<label for="login_email">Email:</label>
+					<input type="login_email" name="login_email" value="{{form['login_email']}}">
+				</div>
+				<div class="form__register--item">
+					{% if 'reg_errors' in session.keys() %}
+					{% if session['login_errors']['email']: %}
+					<span class="error">{{session['login_errors']['email']}}</span>
+					{% endif %}
+					{% endif %}
+				</div>
+				<div class="form__register--item">
+					<label for="login_password">Password:</label>
+					<input type="password" name="login_password">
+				</div>
+				<div class="form__register--item">
+					{% if 'reg_errors' in session.keys() %}
+					{% if session['login_errors']['password']: %}
+					<span class="error">{{session['login_errors']['password']}}</span>
+					{% endif %}
+					{% endif %}
+				</div>
+				<button class="form__register--btn">Login</button>
+			</form>
+		</div>
+	</div>
+	{% endif %}
+</body>
+</html>

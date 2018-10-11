@@ -1,0 +1,159 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	box-sizing: border-box;
+}
+body {
+	margin: 0 auto;
+}
+
+h2 {
+	/* margin: 3rem 5rem; */
+	font-size: 3rem;
+}
+
+
+.user__container {
+	padding: 4rem;
+	position: relative;
+}
+
+.user__container > :first-child {
+	border-bottom: 2px solid rgba(0,0,0,.2);
+}
+
+.user__list {
+	padding-top: 1rem;
+	display: flex;
+	flex-direction: column;
+	font-size: 1.5rem;
+	font-weight: 600;
+	border-bottom: 2px solid rgba(0,0,0,.2);
+	text-align: left;
+}
+.user__list:nth-child(2) {
+	background-color: #ddd;
+}
+
+.user__list:nth-child(odd) {
+	background-color: #eee;
+}
+
+.user__list--row {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.user__list--row div:nth-child(1) {
+	width: 5%;
+	margin-left: 2rem;
+}
+
+.user__list--row div:nth-child(2) {
+	width: 20%;
+}
+
+.user__list--row div:nth-child(3) {
+	width: 30%;
+}
+
+.user__list--row div:nth-child(4) {
+	width: 25%;
+}
+
+.user__list--row div:last-child {
+	width: 40%;
+}
+
+.user__list--label {
+	width: 30%;
+	color: purple;
+}
+
+.user__list--item {
+	width: 30%;
+}
+
+.user__list--btn {
+	text-decoration: none;
+	color: white;
+	font-size: 1.5rem;
+	cursor: pointer;
+	border-radius: 5px;
+	padding: .5rem 1.5rem;
+}
+
+.u-red {
+	background-color: #b000b5;
+}
+
+.u-green {
+	background-color: green;
+}
+.error {
+	font-size: 1.5rem;
+	color: red;
+	/* margin-top: 1rem; */
+}
+
+.forms {
+	margin: 0 auto;
+	width: 80%;
+	display: flex;
+	justify-content: space-around;
+	border: 3px solid rgba(0,0,0,0.1);
+}
+.form__container {
+	/* border: 1px dashed red; */
+	width: 30%;
+	padding: 1rem 2rem;
+}
+.form__register {
+	height: 40rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/* border: 2px dashed red; */	
+}
+
+.form__register--item {
+	width: 100%;
+	font-size: 1.5rem;
+	margin-top: 1rem;
+	display: flex;
+	/* justify-content: space-between; */
+	align-items: center;
+	/* border: 1px dashed blue; */
+}
+
+.form__register--item label {
+	width: 30%;
+}
+
+.form__register--item input {
+	width: 50%;
+}
+
+
+.form__register--btn {
+	margin: 0 auto;
+	margin-top: 2rem;
+	width: 50%;
+	border-radius: 100px;
+	padding: .5rem 1.5rem;
+	text-transform: uppercase;
+	background-color: transparent;
+}
+
+button:hover {
+	cursor: pointer;
+	background-color: lightgreen;
+}
+
