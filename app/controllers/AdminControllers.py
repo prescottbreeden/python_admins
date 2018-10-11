@@ -11,7 +11,7 @@ bcrypt = Bcrypt(app)
 user_api = UserAPI()
 
 
-class Controllers:
+class AdminControllers:
     def home(self):
         form = {
             "first_name": '',
